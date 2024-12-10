@@ -2,12 +2,14 @@
 
 @section('content')
 @include('layouts.navbars.auth.topnav', ['title' => 'History Laundry', 'titleSub' => ''. ucfirst(Auth::user()->auth). ' : '. Auth::user()->nama])
+<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+<script src="{{ asset('js/custom.js') }}"></script>
 <div class="container-fluid py-4">
     <div class="row">
         <!-- Header Card -->
         <div class="col-lg-3 col-md-4">
-            <div class="card shadow border-0" style="background-color: #003366">
-                <h5 class="mb-4 fw-bold text-white"> Order History</h5>
+            <div class="card shadow border-0" style="background-color: #f56d37">
+                <h5 class="mb-4 fw-bold text-white "> Order History</h5>
                 <div class="card-body text-center">
             </div>
         </div>
@@ -18,14 +20,14 @@
                 <table class="table align-middle text-center">
                     <thead class="text-black fw-bold">
                         <tr class="border-bottom">
-                            <th class="p-3">ID</th>
-                            <th class="p-3">Nama Customer</th>
-                            <th class="p-3">Tanggal Masuk</th>
-                            <th class="p-3">Tanggal Selesai</th>
-                            <th class="p-3">Harga (Rp)</th>
-                            <th class="p-3">Bukti</th>
-                            <th class="p-3">Status Pembayaran</th>
-                            <th class="p-3">Status Laundry</th>
+                            <th class="p-3 text-orange">ID</th>
+                            <th class="p-3 text-orange">Nama Customer</th>
+                            <th class="p-3 text-orange">Tanggal Masuk</th>
+                            <th class="p-3 text-orange ">Tanggal Selesai</th>
+                            <th class="p-3 text-orange ">Harga (Rp)</th>
+                            <th class="p-3 text-orange ">Bukti</th>
+                            <th class="p-3 text-orange">Status Pembayaran</th>
+                            <th class="p-3 text-orange">Status Laundry</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,27 +41,27 @@
                             <td>{{$pembayaran->total}}</td>
                             <td>
                                 @if ($pembayaran->bukti)
-                                    <button type="button"
+                                <button type="button"
                                         class="btn btn-sm text-white"
-                                        style="background-color: #003366"
+                                        style="background-color: #f56d37"
                                         data-bs-toggle="modal"
                                         data-bs-target="#viewBuktiModal"
                                         data-bukti="{{ asset('storage/' . $pembayaran->bukti) }}">
-                                        File
-                                    </button>
+                                    File
+                                </button>
+                            @else
+                                @if (Auth::user()->auth == 'admin')
+                                    Belum ada bukti
                                 @else
-                                    @if (Auth::user()->auth == 'admin')
-                                        Belum ada bukti
-                                    @else
-                                        <button type="button"
+                                    <button type="button"
                                             class="btn btn-primary"
                                             data-id="{{ $pembayaran->id }}"
                                             data-bs-toggle="modal"
                                             data-bs-target="#uploadBuktiModal">
-                                            Upload Bukti
-                                        </button>
-                                    @endif
+                                        Upload Bukti
+                                    </button>
                                 @endif
+                            @endif
                             </td>
                             <td>
                                 @if (Auth::user()->auth  == "admin")
@@ -132,7 +134,7 @@
 </script>
 @else
 <!-- Modal -->
-<div class="modal fade" id="viewBuktiModal" tabindex="-1" aria-labelledby="viewBuktiModalLabel" aria-hidden="true">
+<<div class="modal fade" id="viewBuktiModal" tabindex="-1" aria-labelledby="viewBuktiModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -140,6 +142,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
+                <!-- The Image will be dynamically added here -->
                 <img id="buktiImage" src="#" alt="Bukti Pembayaran" class="img-fluid d-none">
                 <p id="buktiText" class="text-muted d-none">Tidak dapat memuat file bukti.</p>
             </div>

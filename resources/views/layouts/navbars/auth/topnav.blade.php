@@ -1,3 +1,5 @@
+
+<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="false">
     <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
@@ -26,7 +28,7 @@
                                                 ->count();
                     @endphp
                     <a href="{{ route('notifikasi') }}" class="nav-link p-0 position-relative">
-                        {{ svg('ionicon-notifications', 'icon-sm text-light') }}
+                       <img src="{{ asset('img/NotificationIcon.png') }}" alt="Notif" class="icon-sm text-light">
                         @if($unreadNotifications > 0)
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 {{ $unreadNotifications }}

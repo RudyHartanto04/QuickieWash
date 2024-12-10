@@ -2,17 +2,18 @@
 
 @section('content')
 @include('layouts.navbars.auth.topnav', ['title' => 'Edit Detail', 'titleSub' => ''. ucfirst(Auth::user()->auth). ' : '. Auth::user()->nama])
+<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 <div class="container py-4">
     <div class="card shadow border-0">
         <div class="card-header bg-white">
-            <h5 class="fw-bold text-start">Edit {{ ucfirst($category) }}</h5>
+            <h5 class="fw-bold text-start text-orange">Edit {{ ucfirst($category) }}</h5>
         </div>
         <div class="card-body">
             <form action="{{ route('pages.editlaundry', ['auth' => Auth::user()->auth]) }}" method="POST">
                 @csrf
                 <input type="hidden" name="id_pembayaran" value="{{$pembayaran->id}}">
                 <div class="mb-3">
-                    <label for="customer" class="form-label">Nama</label>
+                    <label for="customer" class="form-label text-orange">Nama</label>
                     <select name="id_customer" id="customer" class="form-select" required>
                         <option value="" disabled>Pilih Customer</option>
                         @foreach ($customers as $customer)
@@ -37,7 +38,7 @@
                 </div>
                 @else
                 <div class="mb-3">
-                    <label for="jumlah" class="form-label">Jumlah</label>
+                    <label for="jumlah" class="form-label text-orange">Jumlah</label>
                     <input
                         type="number"
                         name="jumlah"
@@ -48,7 +49,7 @@
                 </div>
                 @endif
                 <div class="mb-3">
-                    <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
+                    <label for="tanggal_mulai" class="form-label text-orange">Tanggal Mulai</label>
                     <input
                         type="date"
                         name="tanggal_mulai"
@@ -59,7 +60,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="tanggal_selesai" class="form-label">Tanggal Selesai</label>
+                    <label for="tanggal_selesai" class="form-label text-orange">Tanggal Selesai</label>
                     <input
                         type="date"
                         name="tanggal_selesai"
@@ -68,7 +69,7 @@
                         value="{{ $pembayaran->tanggal_selesai }}"
                         required>
                 </div>
-                <button type="submit" class="btn btn-primary w-100" style="background-color: #003366">Edit</button>
+                <button type="submit" class="btn btn-primary w-100" style="background-color: #f56d37">Edit</button>
             </form>
         </div>
     </div>

@@ -15,9 +15,10 @@ use Illuminate\Support\Str;
 class LaundryController extends Controller
 {
     public function index() {
-        $categories = Category::all();
+        $categories = Category::Paginate(3);  // Paginate 4 items per page
         return view('pages.laundry.category', compact('categories'));
     }
+    
 
     public function tambah(Request $request) {
         $attributes = $request->validate([

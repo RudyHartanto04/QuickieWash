@@ -2,6 +2,7 @@
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Dashboard', 'titleSub' => ''. ucfirst(Auth::user()->auth). ' : '. Auth::user()->nama])
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 
            <!-- Panel Welcome (Posisi di atas) -->
            <div id="panel-1" class="panel">
@@ -22,7 +23,7 @@
             </div>
             <div class="panel-container show">
                 <div class="panel-content d-flex justify-content-center align-items-center" style="height: 200px; text-align: center;">
-                    <h1>Welcome</h1>
+                    <h1 class="text-orange">Welcome to Quickie {{ Auth::user()->nama}}!</h1>
                 </div>
             </div>
         </div>

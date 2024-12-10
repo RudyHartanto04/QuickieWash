@@ -2,6 +2,7 @@
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Dashboard', 'titleSub' => ''. ucfirst(Auth::user()->auth). ' : '. Auth::user()->nama])
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
         <!-- Panel Welcome (Posisi di atas) -->
         <div id="panel-1" class="panel">
             <div class="panel-hdr">
@@ -21,7 +22,7 @@
             </div>
             <div class="panel-container show">
                 <div class="panel-content d-flex justify-content-center align-items-center" style="height: 200px; text-align: center;">
-                    <h1>Welcome</h1>
+                    <h1 class ="text-orange ">Welcome Admin</h1>
                 </div>
             </div>
         </div>
@@ -35,11 +36,11 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <h5 class="font-weight-bolder">
-                                        {{$totalPembayaran}}
+                                    <h5 class="font-weight-bolder text-orange">
+                                        {{ $totalPembayaran }}
                                     </h5>
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">
-                                        Total Pembayaran Laundry
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold text-orange">
+                                        Harga Total Laundry
                                     </p>
                                 </div>
                             </div>
@@ -60,10 +61,10 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <h5 class="font-weight-bolder">
+                                    <h5 class="font-weight-bolder text-orange">
                                         {{$totalUsers}}
                                     </h5>
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold text-orange">
                                         Total Customer
                                     </p>
                                 </div>

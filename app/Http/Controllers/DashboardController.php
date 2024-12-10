@@ -30,15 +30,16 @@ class DashboardController extends Controller
     public function dashboard() {
         if (Auth::check()) {
             if (Auth::user()->auth == 'admin') {
+                // Modify the calculation to sum the 'total' column instead of 'jumlah'
                 $totalLaundry = Pembayaran::where('status_bukti', 1)->get()->sum(function ($payment) {
-                    return intval(str_replace('.', '', $payment->jumlah));
+                    return intval(str_replace('.', '', $payment->total)); // Sum the 'total' column
                 });
-
+    
                 $totalUsers = User::where('auth', 'customer')->count();
-
+                
+                // Format the total amount
                 $totalPembayaran = $this->format_rupiah($totalLaundry);
-
-
+    
                 return view('pages.dashboard-admin', compact('totalUsers', 'totalPembayaran'));
             } else {
                 return view('pages.dashboard-customer');

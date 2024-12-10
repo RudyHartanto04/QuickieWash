@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="{{url('/img/apple-icon.png')}}">
-    <link rel="icon" type="image/png" href="{{url('/img/favicon.png')}}">
+    <link rel="icon" type="ico" href="{{ asset('favicon.ico') }}">
     <title>
-            CleanDray
+            QuickieWash
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -21,12 +21,12 @@
     <link id="pagestyle" href="{{url('assets/css/argon-dashboard.css')}}" rel="stylesheet" />
     <style>
         .modal-header {
-            background-color: #003366;
+            background-color: #f56d37;
             color: white;
         }
 
         .btn-primary {
-            background-color: #003366;
+            background-color: #f56d37;
             border: none;
         }
     </style>
@@ -44,11 +44,11 @@
             @yield('content')
         @else
             @if (!in_array(request()->route()->getName(), ['profile']))
-            <div class="position-absolute w-100 min-height-300 top-0" style="background-color: #003366;">
+            <div class="position-absolute w-100 min-height-300 top-0" style="background-color: #f56d37;">
 </div>
 
             @elseif (in_array(request()->route()->getName(), ['profile']))
-            <div class="position-absolute w-100 min-height-300 top-0" style="background-color: #003366;">
+            <div class="position-absolute w-100 min-height-300 top-0" style="background-color: #f56d37;">
 </div>
 
             @endif

@@ -14,6 +14,10 @@ class PembayaranController extends Controller
         if (Auth::check()) {
             if ($auth == "admin") {
                 $data = Pembayaran::all();
+    
+                // Calculate total pembayaran using the 'total' column
+                $totalPembayaran = Pembayaran::sum('total');  // Use 'total' here
+    
                 $result = array();
                 foreach($data as $item) {
                     $nama = User::select('username')->where('id', $item->id_customer)->first()->username;
@@ -22,12 +26,14 @@ class PembayaranController extends Controller
                         'id_pembayaran' => $item->id,
                         'tanggal_tagihan' => $item->tanggal_tagihan,
                         'berat' => $item->berat,
-                        'jumlah' => 'RP. ' . $item->jumlah,
+                        'jumlah' => '' . number_format($item->total, 0, ',', '.'), // Use 'total' here
                         'status' => $item->status,
                         'bukti' => $item->bukti,
                     ];
                 }
-                return view('pages.pembayaran-admin', ['data' => $result]);
+    
+                // Pass the totalPembayaran to the view
+                return view('pages.pembayaran-admin', ['data' => $result, 'totalPembayaran' => number_format((float) $totalPembayaran, 0, ',', '.')]);
             } else {
                 $data = Pembayaran::where('id_customer', Auth::id())->get();
                 $result = array();
@@ -36,11 +42,12 @@ class PembayaranController extends Controller
                         'id' => $item->id,
                         'tanggal_tagihan' => $item->tanggal_tagihan,
                         'berat' => $item->berat,
-                        'jumlah' => 'RP. ' . $item->jumlah,
+                        'jumlah' => '' . number_format($item->total, 0, ',', '.'), // Use 'total' here
                         'status' => $item->status,
                         'bukti' => $item->bukti,
                     ];
                 }
+    
                 return view('pages.pembayaran-customer', ['data' => $result]);
             }
         } else {

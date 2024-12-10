@@ -21,26 +21,54 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123'),
             'auth' => 'admin',
         ]);
+
         DB::table('users')->insert([
-            'nama' => 'ujang',
-            'email' => 'ujang@gmail.com',
+            'nama' => 'Ambativasi',
+            'email' => 'amba@gmail.com',
             'password' => bcrypt('123'),
             'auth' => 'customer',
         ]);
+
         DB::table('category')->insert([
-            'nama' => 'pakaian',
+            'nama' => 'Pakaian',
             'harga' => '7000',
-            'icon' => 'ionicon-shirt-outline'
+            'icon' => 'img/shirt.png'
         ]);
         DB::table('category')->insert([
-            'nama' => 'seprai',
+            'nama' => 'Seprai',
             'harga' => '35000',
-            'icon' => 'ionicon-bed-outline'
+            'icon' => 'img/bed.png'
         ]);
         DB::table('category')->insert([
-            'nama' => 'sepatu',
+            'nama' => 'Sepatu',
             'harga' => '3500',
-            'icon' => 'hugeicons-running-shoes'
+            'icon' => 'img/shoes.png'
+        ]);
+
+        DB::table('category')->insert([
+            'nama' => 'Handuk',
+            'harga' => '5000',
+            'icon' => 'img/towel.png'
+        ]);
+        DB::table('category')->insert([
+            'nama' => 'Jas',
+            'harga' => '15000',
+            'icon' => 'img/suit.png'
+        ]);
+        DB::table('category')->insert([
+            'nama' => 'Jaket',
+            'harga' => '12000',
+            'icon' => 'img/jacket.png'
+        ]);
+        DB::table('category')->insert([
+            'nama' => 'Tas',
+            'harga' => '20000',
+            'icon' => 'img/backpack.png'
+        ]);
+        DB::table('category')->insert([
+            'nama' => 'Gulungan Karpet',
+            'harga' => '25000',
+            'icon' => 'img/carpet.png'
         ]);
     }
 }

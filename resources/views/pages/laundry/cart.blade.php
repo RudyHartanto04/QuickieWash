@@ -2,6 +2,7 @@
 
 @section('content')
 @include('layouts.navbars.auth.topnav', ['title' => 'Cart', 'titleSub' => ''. ucfirst(Auth::user()->auth). ' : '. Auth::user()->nama])
+<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 <div class="container-fluid">
     <div class="row">
         <!-- Content -->
@@ -22,7 +23,7 @@
                 <div class="col-md-8">
                     <div class="card shadow-sm mb-3 p-3">
                         @foreach ($carts as $cart)
-                        <h5 class="text-black fw-bold">{{ucfirst($cart->category->nama)}}</h5>
+                        <h5 class="text-orange fw-bold">{{ucfirst($cart->category->nama)}}</h5>
                         <p>Nama: {{$cart->pembayaran->users->nama}}</p>
                         @if ($cart->category->nama == 'pakaian')
                             <p>Berat: {{$cart->jumlah}} Kg</p>
@@ -41,13 +42,13 @@
                 <!-- Price Summary -->
                 <div class="col-md-4">
                     <div class="card shadow-sm p-3">
-                        <h5 class="text-black fw-bold">Rincian Harga</h5>
+                        <h5 class="text-orange fw-bold">Rincian Harga</h5>
                         @foreach ($summary as $item)
                             <p>{{ ucfirst($item['jenis']) }}: Rp.{{ number_format($item['total_harga'], 0, ',', '.') }}</p>
                         @endforeach
                         <hr>
-                        <h6 class="fw-bold">Total: Rp.{{ number_format($summary->sum('total_harga'), 0, ',', '.') }}</h6>
-                        <a class="btn btn-primary w-100 mt-3" style="background-color: #003366" href="{{route('pages.makeOrder', ['auth' => 'admin'])}}">Kirim</a>
+                        <h6 class="fw-bold text-orange">Total: Rp.{{ number_format($summary->sum('total_harga'), 0, ',', '.') }}</h6>
+                        <a class="btn btn-primary w-100 mt-3" style="background-color: #f56d37" href="{{route('pages.makeOrder', ['auth' => 'admin'])}}">Kirim</a>
                     </div>
                 </div>
             </div>
